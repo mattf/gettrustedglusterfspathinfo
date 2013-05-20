@@ -36,7 +36,10 @@ main(int argc, char *argv[])
          return 10;
       }
 
-      value = calloc(sizeof(char), size0);
+      // The getxattr man page does not state if size0 will
+      // include a terminating null. For safety we'll just
+      // increment the buffer size by 1.
+      value = calloc(sizeof(char), size0 + 1);
 
       if (-1 == (size1 = getxattr(filename, PATHINFO, value, size0))) {
          perror("getxattr");
