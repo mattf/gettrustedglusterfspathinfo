@@ -40,6 +40,10 @@ main(int argc, char *argv[])
       // include a terminating null. For safety we'll just
       // increment the buffer size by 1.
       value = calloc(sizeof(char), size0 + 1);
+      if (!value) {
+         perror("calloc");
+         return 20;
+      }
 
       if (-1 == (size1 = getxattr(filename, PATHINFO, value, size0))) {
          perror("getxattr");
