@@ -1,0 +1,2 @@
+Install this program setuid, it will provide safe access to the
+trusted.glusterfs.pathinfo attribute on any file.
